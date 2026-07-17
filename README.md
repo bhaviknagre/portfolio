@@ -14,18 +14,23 @@ npx serve .
 
 Then open `http://localhost:8080`.
 
-## ⚠️ Things you still need to add before this looks fully finished
+## Images
 
-All images live in **`assets/img/`** — that's the folder to drop your files into. Use these exact filenames and they'll appear automatically (each one currently falls back to a clean styled icon placeholder, so nothing looks broken in the meantime):
+All images live in **`assets/img/`**:
 
-| Item | Path to add | Where it's used |
+| Item | Path | Where it's used |
 |---|---|---|
-| Your headshot | `assets/img/profile-photo.jpg` | Hero section |
-| Ollion logo | `assets/img/ollion-logo.png` | Experience — both Ollion entries |
-| Xscientist logo | `assets/img/xscientist-logo.png` | Experience — Xscientist entry |
+| Headshot | `assets/img/profile-photo.jpg` | Hero section |
+| Ollion logo | `assets/img/ollion-logo.jpeg` | Experience — both Ollion entries |
+| Xscientist logo | `assets/img/xscientist-logo.jpeg` | Experience — Xscientist entry |
 | Google Cloud logo | `assets/img/google-logo.png` | Certifications |
-| AlmaBetter logo | `assets/img/almabetter-logo.png` | Certifications |
-| YouTube walkthrough link | `index.html` → search `Watch Walkthrough` | DocuMind project card currently points to `#` (placeholder) |
+| AlmaBetter logo | `assets/img/almabetter-logo.jpeg` | Certifications |
+
+Each falls back to a styled icon placeholder if the file is missing, so nothing looks broken while you're adding them.
+
+## ⚠️ Still open
+
+- **YouTube walkthrough link** — the DocuMind project card's "Watch Walkthrough" button currently points to `#`. Update its `href` in `index.html` once you have a real video.
 
 ## Structure
 
@@ -49,5 +54,5 @@ This repo is set up to be served directly — no build step. Once pushed to GitH
 
 - HTML5 / CSS3 (custom properties, grid, flexbox, `IntersectionObserver`-driven reveal animations)
 - Vanilla JS (no framework, no build tooling)
-- [Lucide](https://unpkg.com/lucide@latest/dist/umd/lucide.js) icon set via CDN
+- [Lucide](https://unpkg.com/lucide@1.25.0/dist/umd/lucide.js) icon set via CDN (pinned version), with inline brand SVGs (GitHub/LinkedIn/YouTube — Lucide dropped brand-logo icons)
 - Google Fonts: Inter + JetBrains Mono
