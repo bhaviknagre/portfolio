@@ -16,25 +16,24 @@ Then open `http://localhost:8080`.
 
 ## ⚠️ Things you still need to add before this looks fully finished
 
-| Item | Expected filename | Where it's used |
+All images live in **`assets/img/`** — that's the folder to drop your files into. Use these exact filenames and they'll appear automatically (each one currently falls back to a clean styled icon placeholder, so nothing looks broken in the meantime):
+
+| Item | Path to add | Where it's used |
 |---|---|---|
-| Your headshot | `profile-photo.jpg` (place in repo root) | Hero section — shows a styled placeholder icon until this file exists |
-| Ollion logo | `company-logo-placeholder.png` | Experience — both Ollion entries |
-| Xscientist logo | `company-logo-placeholder.png` | Experience — Xscientist entry |
-| Google Cloud logo | `google-logo-placeholder.png` | Certifications |
-| AlmaBetter logo | `almabetter-logo-placeholder.png` | Certifications |
-| YouTube walkthrough link | `index.html` → search `Watch Walkthrough` | Project 1 card currently points to `#` (placeholder) |
-
-All of the above degrade gracefully (a styled icon placeholder is shown instead of a broken image) so the site looks correct even before you add the real files — just drop the images into the repo root with the exact filenames above and they'll appear automatically.
-
-> Note: the three experience entries all currently reference the same `company-logo-placeholder.png`. If you want distinct logos per company, add separate image files and update the `src` attributes in `index.html` for the Ollion and Xscientist `<article>` blocks under `#experience`.
+| Your headshot | `assets/img/profile-photo.jpg` | Hero section |
+| Ollion logo | `assets/img/ollion-logo.png` | Experience — both Ollion entries |
+| Xscientist logo | `assets/img/xscientist-logo.png` | Experience — Xscientist entry |
+| Google Cloud logo | `assets/img/google-logo.png` | Certifications |
+| AlmaBetter logo | `assets/img/almabetter-logo.png` | Certifications |
+| YouTube walkthrough link | `index.html` → search `Watch Walkthrough` | DocuMind project card currently points to `#` (placeholder) |
 
 ## Structure
 
 ```
-index.html      All markup/content
-style.css       All styling (CSS variables at the top control the theme)
-script.js       Nav toggle, scroll-reveal animations, active-link highlighting, back-to-top
+index.html          All markup/content
+style.css           All styling (CSS variables at the top control the theme)
+script.js           Nav toggle, scroll-reveal animations, active-link highlighting, back-to-top
+assets/img/         Drop your photo + company/cert logos here (see table above)
 ```
 
 ## Deployment (GitHub Pages)
