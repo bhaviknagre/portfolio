@@ -28,10 +28,6 @@ All images live in **`assets/img/`**:
 
 Each falls back to a styled icon placeholder if the file is missing, so nothing looks broken while you're adding them.
 
-## ⚠️ Still open
-
-- **YouTube walkthrough link** — the DocuMind project card's "Watch Walkthrough" button currently points to `#`. Update its `href` in `index.html` once you have a real video.
-
 ## Structure
 
 ```
