@@ -703,67 +703,111 @@ ul { list-style: none; }
   transform: scaleY(1.05);
 }
 
-/* ---- Delta/diff illustration (document revision comparison) ---- */
-.illustration-delta-stack {
-  position: relative;
-  width: 66%;
-  height: 68%;
+/* ---- Delta/diff illustration (mock "diff viewer" UI window) ---- */
+.illustration-delta {
+  align-items: center;
 }
-.delta-doc {
-  position: absolute;
-  inset: 0;
-  border-radius: 10px;
-  background: var(--bg-elevated);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-  padding: 14px;
+.delta-window {
+  position: relative;
+  width: 88%;
+  height: 82%;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
-.delta-doc-a {
-  transform: translate(-14px, -10px) rotate(-4deg);
-  opacity: 0.55;
+.project-card:hover .delta-window {
+  transform: translateY(-3px) scale(1.015);
+  box-shadow: 0 26px 52px rgba(0, 0, 0, 0.55), 0 0 26px rgba(16, 185, 129, 0.16);
 }
-.delta-doc-a span {
-  display: block;
-  height: 6px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.14);
-}
-.delta-doc-a span:nth-child(2) { width: 70%; }
-.delta-doc-a span:nth-child(3) { width: 85%; }
-.delta-doc-a span:nth-child(4) { width: 55%; }
-.delta-doc-b {
-  transform: translate(14px, 10px) rotate(3deg);
-}
-.delta-doc-b span {
-  display: block;
-  height: 6px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.16);
-}
-.delta-doc-b span:nth-child(2) { width: 78%; }
-.delta-doc-b span:nth-child(3) { width: 55%; background: rgba(248, 113, 113, 0.75); }
-.delta-doc-b span:nth-child(4) { width: 62%; background: rgba(250, 204, 21, 0.75); }
-.delta-chips {
-  position: absolute;
-  bottom: -14px;
-  right: -14px;
+
+.delta-window-bar {
   display: flex;
+  align-items: center;
   gap: 6px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.035);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.delta-dot { width: 7px; height: 7px; border-radius: 50%; opacity: 0.85; }
+.delta-dot:nth-child(1) { background: #f87171; }
+.delta-dot:nth-child(2) { background: #facc15; }
+.delta-dot:nth-child(3) { background: var(--accent); }
+.delta-window-label {
+  margin-left: 8px;
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.delta-window-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 16px 12px;
+}
+.delta-pane { flex: 1; display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+.delta-pane-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.32);
+  margin-bottom: 2px;
+}
+.delta-line {
+  display: block;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.13);
+}
+.delta-line-changed { background: linear-gradient(90deg, #facc15 0%, rgba(250, 204, 21, 0.25) 100%); }
+.delta-line-removed { background: repeating-linear-gradient(90deg, #f87171 0, #f87171 4px, transparent 4px, transparent 7px); opacity: 0.8; }
+.delta-line-added { background: linear-gradient(90deg, var(--accent) 0%, rgba(16, 185, 129, 0.25) 100%); }
+
+.delta-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: var(--accent);
+  box-shadow: 0 0 18px rgba(16, 185, 129, 0.3);
+}
+.delta-divider svg { width: 16px; height: 16px; }
+
+.delta-window-footer {
+  display: flex;
+  gap: 8px;
+  padding: 10px 14px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
 }
 .delta-chip {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  box-shadow: 0 0 10px currentColor;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 4px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
 }
-.delta-chip.chip-red { background: #f87171; color: #f87171; }
-.delta-chip.chip-yellow { background: #facc15; color: #facc15; }
-.delta-chip.chip-green { background: var(--accent); color: var(--accent); }
-.project-card:hover .delta-doc-a { transform: translate(-18px, -13px) rotate(-6deg); }
-.project-card:hover .delta-doc-b { transform: translate(18px, 13px) rotate(5deg); }
+.delta-chip::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 6px currentColor; }
+.delta-chip.chip-red { color: #f87171; background: rgba(248, 113, 113, 0.12); border: 1px solid rgba(248, 113, 113, 0.3); }
+.delta-chip.chip-yellow { color: #facc15; background: rgba(250, 204, 21, 0.12); border: 1px solid rgba(250, 204, 21, 0.3); }
+.delta-chip.chip-green { color: var(--accent); background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); }
 
 .project-body {
   padding: 24px;

@@ -330,22 +330,38 @@
         <article class="project-card reveal">
           <div class="project-image project-illustration illustration-delta">
             <div class="illustration-grid"></div>
-            <div class="illustration-icon"><i data-lucide="git-compare"></i></div>
-            <div class="illustration-delta-stack">
-              <div class="delta-doc delta-doc-a"><span></span><span></span><span></span><span></span></div>
-              <div class="delta-doc delta-doc-b">
-                <span></span><span></span><span></span><span></span>
-                <div class="delta-chips">
-                  <span class="delta-chip chip-red"></span>
-                  <span class="delta-chip chip-yellow"></span>
-                  <span class="delta-chip chip-green"></span>
+            <div class="delta-window">
+              <div class="delta-window-bar">
+                <span class="delta-dot"></span><span class="delta-dot"></span><span class="delta-dot"></span>
+                <span class="delta-window-label">rev_a.pdf &#8594; rev_b.pdf</span>
+              </div>
+              <div class="delta-window-body">
+                <div class="delta-pane delta-pane-a">
+                  <span class="delta-pane-label">Rev A</span>
+                  <span class="delta-line" style="width:88%"></span>
+                  <span class="delta-line" style="width:64%"></span>
+                  <span class="delta-line" style="width:76%"></span>
+                  <span class="delta-line" style="width:50%"></span>
                 </div>
+                <div class="delta-divider"><i data-lucide="git-compare"></i></div>
+                <div class="delta-pane delta-pane-b">
+                  <span class="delta-pane-label">Rev B</span>
+                  <span class="delta-line delta-line-changed" style="width:88%"></span>
+                  <span class="delta-line" style="width:64%"></span>
+                  <span class="delta-line delta-line-removed" style="width:76%"></span>
+                  <span class="delta-line delta-line-added" style="width:58%"></span>
+                </div>
+              </div>
+              <div class="delta-window-footer">
+                <span class="delta-chip chip-red">1 Critical</span>
+                <span class="delta-chip chip-yellow">3 Review</span>
+                <span class="delta-chip chip-green">2 Minor</span>
               </div>
             </div>
           </div>
           <div class="project-body">
             <h3>DeltaIQ: Engineering Document Delta &amp; Q&amp;A Engine</h3>
-            <p>Built a document delta-intelligence engine that ingests two revisions of the same engineering drawing — native PDF, scanned PDF, or DXF/DWG — into one canonical model, computes a deterministic, confidence-scored delta between them, and answers grounded questions over both revisions and the diff with exact citations. Every change is ranked by a red/yellow/green criticality signal, and an opt-in LangGraph self-verification loop re-checks citations against retrieved evidence before returning an answer.</p>
+            <p>Engineers still redline P&amp;ID revisions by eye, and one missed dimension change can trigger real rework downstream. DeltaIQ automates it — parsing native PDFs, scanned drawings, and CAD files into one model, then ranking every change red/yellow/green by real risk with a confidence score. A citation-grounded chat layer lets engineers just ask what changed instead of comparing two drawings by hand.</p>
             <div class="tag-list tag-list-sm">
               <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">LangGraph</span><span class="tag">PyMuPDF</span><span class="tag">Tesseract OCR</span><span class="tag">BM25</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">Celery</span><span class="tag">Chroma</span><span class="tag">Pinecone</span><span class="tag">MinIO</span><span class="tag">Kubernetes</span><span class="tag">Terraform</span><span class="tag">Docker</span><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">DVC</span>
             </div>
@@ -363,7 +379,7 @@
           </div>
           <div class="project-body">
             <h3>DocuMind: Distributed Document Q&amp;A Engine</h3>
-            <p>Built a distributed Retrieval-Augmented Generation platform that ingests documents asynchronously and answers natural-language questions over them with low-latency semantic search. Features event-driven worker autoscaling and a pluggable vector retrieval layer.</p>
+            <p>Most RAG demos fall over the moment ingestion has to run at real scale. DocuMind ingests documents asynchronously with event-driven worker autoscaling and answers questions over them with low-latency semantic search, through a pluggable vector-store layer that swaps backends without touching a call site.</p>
             <div class="tag-list tag-list-sm">
               <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">Celery</span><span class="tag">Redis</span><span class="tag">Kubernetes</span><span class="tag">Helm</span><span class="tag">KEDA</span><span class="tag">HPA</span><span class="tag">Docker</span><span class="tag">Nginx</span><span class="tag">Chroma</span><span class="tag">Pinecone</span><span class="tag">MongoDB Atlas</span><span class="tag">Ollama</span><span class="tag">DVC</span><span class="tag">Prometheus</span><span class="tag">Grafana</span>
             </div>
@@ -381,7 +397,7 @@
           </div>
           <div class="project-body">
             <h3>GKE-Orchestrated Multi-Service Backend</h3>
-            <p>Architected and deployed a dual-service backend on Google Kubernetes Engine (GKE), leveraging Docker and Helm for scalable container orchestration, automated multi-environment Cloud Build pipelines, and production-ready Terraform provisioning.</p>
+            <p>Took a dual-service backend from local code to production-grade cloud infrastructure: containerized with Docker and Helm, orchestrated on GKE, and provisioned end-to-end with Terraform. Cloud Build pipelines promote the same image across environments instead of rebuilding per stage — the difference between a demo and something a team can actually run.</p>
             <div class="tag-list tag-list-sm">
               <span class="tag">GCP</span><span class="tag">Kubernetes (GKE)</span><span class="tag">Docker</span><span class="tag">Terraform</span><span class="tag">Helm</span><span class="tag">Cloud Build</span><span class="tag">PostgreSQL</span><span class="tag">Cloud SQL</span><span class="tag">Prometheus</span><span class="tag">OpenTelemetry</span>
             </div>
@@ -397,7 +413,7 @@
           </div>
           <div class="project-body">
             <h3>Enterprise Customer Churn MLOps Infrastructure</h3>
-            <p>An enterprise-ready, automated Machine Learning Operations (MLOps) infrastructure designed to scale customer churn prediction models. Treats models as dynamic software assets — implementing strict data versioning, explicit artifact tracking, automated orchestration, and containerized cloud deployment pipelines.</p>
+            <p>Churn models rot the moment training data drifts, and most teams can't prove which data produced which model. This pipeline treats the model as a versioned software asset — every dataset and artifact tracked, retraining orchestrated automatically, deployment shipped in a container — so a prediction can always be traced back to exactly what trained it.</p>
             <div class="tag-list tag-list-sm">
               <span class="tag">MLOps</span><span class="tag">Data Versioning</span><span class="tag">CI/CD</span><span class="tag">Containerization</span><span class="tag">Automation</span><span class="tag">Python</span>
             </div>
@@ -423,7 +439,7 @@
           </div>
           <div class="project-body">
             <h3>Cricket Performance Analytics Engine</h3>
-            <p>An end-to-end data analytics and business intelligence project transforming raw cricket telemetry into strategic, actionable sports insights. Features advanced web scraping, rigorous data engineering workflows, and a data-driven "World's Best XI" algorithmic squad selector that eliminates human bias.</p>
+            <p>Squad selection in cricket is usually a gut call dressed up as analysis. This pipeline scrapes raw match telemetry, runs it through a rigorous ETL/EDA workflow, and scores every player algorithmically to build a data-backed "World's Best XI" — replacing selector bias with a number you can defend.</p>
             <div class="tag-list tag-list-sm">
               <span class="tag">Web Scraping</span><span class="tag">Advanced ETL</span><span class="tag">EDA</span><span class="tag">BI Dashboards</span><span class="tag">Data Visualization</span><span class="tag">Python</span>
             </div>
@@ -439,7 +455,7 @@
           </div>
           <div class="project-body">
             <h3>Real-Time Sentiment Analytics Pipeline</h3>
-            <p>An end-to-end Natural Language Processing (NLP) pipeline decoding real-time user sentiment from unstructured social media data. Leverages an optimized text preprocessing system and an efficient statistical learning model wrapped in a lightweight, responsive Streamlit application.</p>
+            <p>Social media text is noisy and needs an answer in real time, not after an overnight batch job. This NLP pipeline runs unstructured posts through an optimized preprocessing layer into a lightweight statistical model, surfacing sentiment through a Streamlit app fast enough to actually use live.</p>
             <div class="tag-list tag-list-sm">
               <span class="tag">NLP</span><span class="tag">Text Preprocessing</span><span class="tag">Streamlit</span><span class="tag">Statistical ML</span><span class="tag">Real-Time Processing</span>
             </div>
