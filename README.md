@@ -1,6 +1,6 @@
 # Bhavik Nagre — Portfolio
 
-Single-page, static (no build step) portfolio for a Senior AI & Data Engineer. Dark, glassmorphic, developer-centric UI. Pure HTML5 + CSS3 + vanilla JS, [Lucide](https://lucide.dev) icons via CDN — deploys as-is to GitHub Pages.
+Single-page, static (no build step) portfolio for an AI & Data Engineer. Dark, glassmorphic, developer-centric UI. Pure HTML5 + CSS3 + vanilla JS, [Lucide](https://lucide.dev) icons via CDN — deploys as-is to GitHub Pages.
 
 ## Run locally
 
