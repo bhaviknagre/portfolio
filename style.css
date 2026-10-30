@@ -858,6 +858,12 @@ ul { list-style: none; }
   border: 1px solid var(--border);
   flex-shrink: 0;
 }
+.cert-logo-badge {
+  object-fit: contain;
+  background: none;
+  border: none;
+  border-radius: 0;
+}
 .cert-logo-fallback {
   display: none;
   align-items: center;

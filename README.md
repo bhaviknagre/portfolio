@@ -23,6 +23,7 @@ All images live in **`assets/img/`**:
 | Headshot | `assets/img/profile-photo.jpg` | Hero section |
 | Ollion logo | `assets/img/ollion-logo.jpeg` | Experience — both Ollion entries |
 | Xscientist logo | `assets/img/xscientist-logo.jpeg` | Experience — Xscientist entry |
+| Claude Certified Architect badge | `assets/img/claude-architect-badge.png` | Certifications |
 | Google Cloud logo | `assets/img/google-logo.png` | Certifications |
 | AlmaBetter logo | `assets/img/almabetter-logo.jpeg` | Certifications |
 
